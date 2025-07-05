@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类管理 - 故事管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">故事管理系统</div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa fa-tachometer"></i>
+                    <span class="nav-text">仪表盘</span>
+                </a>
+                
+                <a href="users.html" class="nav-item">
+                    <i class="fa fa-users"></i>
+                    <span class="nav-text">用户管理</span>
+                </a>
+                
+                <a href="stories.html" class="nav-item">
+                    <i class="fa fa-book"></i>
+                    <span class="nav-text">故事管理</span>
+                </a>
+                
+                <a href="categories.html" class="nav-item active">
+                    <i class="fa fa-folder"></i>
+                    <span class="nav-text">分类管理</span>
+                </a>
+                
+                <a href="vip.html" class="nav-item">
+                    <i class="fa fa-diamond"></i>
+                    <span class="nav-text">VIP管理</span>
+                </a>
+                
+                <a href="comments.html" class="nav-item">
+                    <i class="fa fa-comments"></i>
+                    <span class="nav-text">评论管理</span>
+                </a>
+                
+                <a href="orders.html" class="nav-item">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="nav-text">订单管理</span>
+                </a>
+                
+                <a href="favorites.html" class="nav-item">
+                    <i class="fa fa-heart"></i>
+                    <span class="nav-text">收藏管理</span>
+                </a>
+                
+                <div class="nav-bottom">
+                    <a href="settings.html" class="nav-item">
+                        <i class="fa fa-cog"></i>
+                        <span class="nav-text">系统设置</span>
+                    </a>
+                    
+                    <a href="logout.html" class="nav-item">
+                        <i class="fa fa-sign-out"></i>
+                        <span class="nav-text">退出登录</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 顶部导航栏 -->
+            <header class="top-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <button id="sidebar-toggle" class="sidebar-toggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="page-title">
+                            <h1>分类管理</h1>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="user-menu">
+                            <button class="user-menu-button" id="user-menu-button">
+                                <img class="user-avatar" src="https://picsum.photos/id/1005/200/200" alt="用户头像">
+                            </button>
+                            <div class="user-dropdown hidden" id="user-menu">
+                                <a href="profile.html" class="dropdown-item">个人资料</a>
+                                <a href="settings.html" class="dropdown-item">账户设置</a>
+                                <a href="logout.html" class="dropdown-item">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 内容区域 -->
+            <main class="content-area">
+                <!-- 分类管理页面 -->
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1 class="page-title">分类管理</h1>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-plus"></i>添加分类
+                        </button>
+                    </div>
+
+                    <div class="search-section">
+                        <div class="search-grid">
+                            <div class="search-item wide">
+                                <label class="form-label">搜索分类</label>
+                                <div class="search-input-wrapper">
+                                    <input type="text" id="search-input" placeholder="输入分类名称搜索..." class="form-input">
+                                    <i class="fa fa-search search-icon"></i>
+                                </div>
+                            </div>
+                            <div class="search-item">
+                                <label class="form-label">分类状态</label>
+                                <select class="form-select" id="status-filter">
+                                    <option value="">全部状态</option>
+                                    <option value="active">启用</option>
+                                    <option value="inactive">禁用</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="search-actions">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-search"></i>搜索
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fa fa-refresh"></i>重置
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="checkbox-cell">
+                                            <input type="checkbox" class="form-checkbox">
+                                        </th>
+                                        <th>分类信息</th>
+                                        <th>故事数量</th>
+                                        <th>状态</th>
+                                        <th>创建时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="checkbox-cell">
+                                            <input type="checkbox" class="form-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar-small" style="background-color: #3b82f6; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                                    奇
+                                                </div>
+                                                <div class="user-details">
+                                                    <h4>奇幻</h4>
+                                                    <p>魔法与冒险的世界</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>156</td>
+                                        <td>
+                                            <span class="status-badge active">启用</span>
+                                        </td>
+                                        <td>2024-01-15</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn">
+                                                    <i class="fa fa-edit"></i> 编辑
+                                                </button>
+                                                <button class="action-btn delete">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="checkbox-cell">
+                                            <input type="checkbox" class="form-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="user-info">
+                                                <div class="user-avatar-small" style="background-color: #ec4899; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                                    言
+                                                </div>
+                                                <div class="user-details">
+                                                    <h4>言情</h4>
+                                                    <p>浪漫的爱情故事</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>89</td>
+                                        <td>
+                                            <span class="status-badge active">启用</span>
+                                        </td>
+                                        <td>2024-01-20</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn">
+                                                    <i class="fa fa-edit"></i> 编辑
+                                                </button>
+                                                <button class="action-btn delete">
+                                                    <i class="fa fa-trash"></i> 删除
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 添加/编辑分类模态框 -->
+    <div class="modal hidden" id="category-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">添加分类</h2>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="category-form">
+                    <input type="hidden" id="category-id">
+                    <div class="form-group">
+                        <label class="form-label">分类名称</label>
+                        <input type="text" id="category-name" class="form-input" placeholder="请输入分类名称">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">分类描述</label>
+                        <textarea id="category-description" class="form-input" placeholder="请输入分类描述"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">分类状态</label>
+                        <select id="category-status" class="form-select">
+                            <option value="active">启用</option>
+                            <option value="inactive">禁用</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-btn">取消</button>
+                <button class="btn btn-primary" id="save-btn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/categories.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故事管理 - 故事管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">故事管理系统</div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa fa-tachometer"></i>
+                    <span class="nav-text">仪表盘</span>
+                </a>
+                
+                <a href="users.html" class="nav-item">
+                    <i class="fa fa-users"></i>
+                    <span class="nav-text">用户管理</span>
+                </a>
+                
+                <a href="stories.html" class="nav-item active">
+                    <i class="fa fa-book"></i>
+                    <span class="nav-text">故事管理</span>
+                </a>
+                
+                <a href="categories.html" class="nav-item">
+                    <i class="fa fa-folder"></i>
+                    <span class="nav-text">分类管理</span>
+                </a>
+                
+                <a href="vip.html" class="nav-item">
+                    <i class="fa fa-diamond"></i>
+                    <span class="nav-text">VIP管理</span>
+                </a>
+                
+                <a href="comments.html" class="nav-item">
+                    <i class="fa fa-comments"></i>
+                    <span class="nav-text">评论管理</span>
+                </a>
+                
+                <a href="orders.html" class="nav-item">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="nav-text">订单管理</span>
+                </a>
+                
+                <a href="favorites.html" class="nav-item">
+                    <i class="fa fa-heart"></i>
+                    <span class="nav-text">收藏管理</span>
+                </a>
+                
+                <div class="nav-bottom">
+                    <a href="settings.html" class="nav-item">
+                        <i class="fa fa-cog"></i>
+                        <span class="nav-text">系统设置</span>
+                    </a>
+                    
+                    <a href="logout.html" class="nav-item">
+                        <i class="fa fa-sign-out"></i>
+                        <span class="nav-text">退出登录</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 顶部导航栏 -->
+            <header class="top-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <button id="sidebar-toggle" class="sidebar-toggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="page-title">
+                            <h1>故事管理</h1>
+                        </div>
+
+                        <!-- 分页 -->
+
+                    </div>
+                    <div class="header-right">
+                        <div class="user-menu">
+                            <button class="user-menu-button" id="user-menu-button">
+                                <img class="user-avatar" src="https://picsum.photos/id/1005/200/200" alt="用户头像">
+                            </button>
+                            <div class="user-dropdown hidden" id="user-menu">
+                                <a href="profile.html" class="dropdown-item">个人资料</a>
+                                <a href="settings.html" class="dropdown-item">账户设置</a>
+                                <a href="logout.html" class="dropdown-item">退出登录</a>
+                            </div>
+                        </div>
+
+                        <!-- 分页 -->
+
+                    </div>
+                </div>
+            </header>
+
+            <!-- 内容区域 -->
+            <main class="content-area">
+                <!-- 故事管理页面 -->
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1 class="page-title">故事管理</h1>
+                        <button id="add-story-btn" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>添加故事
+                        </button>
+                    </div>
+
+                    <!-- 搜索和筛选区域 -->
+                    <div class="search-section">
+                        <div class="search-grid">
+                            <div class="search-item wide">
+                                <label class="form-label">搜索故事</label>
+                                <div class="search-input-wrapper">
+                                    <input type="text" id="search-input" placeholder="输入故事标题或作者搜索..." class="form-input">
+                                    <i class="fa fa-search search-icon"></i>
+                                </div>
+                            </div>
+                            <div class="search-item">
+                                <label class="form-label">故事状态</label>
+                                <select id="status-filter" class="form-select">
+                                    <option value="">全部状态</option>
+                                    <option value="published">已发布</option>
+                                    <option value="draft">草稿</option>
+                                    <option value="review">审核中</option>
+                                </select>
+                            </div>
+                            <div class="search-item">
+                                <label class="form-label">故事分类</label>
+                                <select id="category-filter" class="form-select">
+                                    <option value="">全部分类</option>
+                                    <option value="fantasy">奇幻</option>
+                                    <option value="romance">言情</option>
+                                    <option value="mystery">悬疑</option>
+                                    <option value="science">科幻</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="search-actions">
+                            <button id="search-btn" class="btn btn-primary">
+                                <i class="fa fa-search"></i>搜索
+                            </button>
+                            <button id="reset-btn" class="btn btn-secondary">
+                                <i class="fa fa-refresh"></i>重置
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 故事表格 -->
+                    <div class="table-container">
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="checkbox-cell">
+                                            <input type="checkbox" id="select-all" class="form-checkbox">
+                                        </th>
+                                        <th>故事信息</th>
+                                        <th>作者</th>
+                                        <th>分类</th>
+                                        <th>状态</th>
+                                        <th>发布时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="stories-table-body">
+                                    <!-- 故事数据将通过JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 分页 -->
+                        <div class="pagination-container">
+                            <div class="pagination-mobile">
+                                <button id="prev-page-mobile"></button>
+                                <button id="next-page-mobile"></button>
+                            </div>
+                            <div class="pagination-desktop">
+                                <div class="pagination-info">
+                                    <p>显示第 <span id="start-item">1</span> 到 <span id="end-item">5</span> 条，
+                                    共 <span id="total-items">0</span> 条记录</p>
+                                </div>
+                                <nav class="pagination" id="pagination">
+                                    <!-- 分页按钮将通过JavaScript动态生成 -->
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 添加/编辑故事模态框 -->
+    <div class="modal hidden" id="story-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">添加故事</h2>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="story-form">
+                    <input type="hidden" id="story-id">
+                    <div class="form-group">
+                        <label for="title" class="form-label">故事标题</label>
+                        <input type="text" id="title" name="title" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author" class="form-label">作者</label>
+                        <input type="text" id="author" name="author" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category" class="form-label">分类</label>
+                        <select id="category" name="category" class="form-select" required>
+                            <option value="fantasy">奇幻</option>
+                            <option value="romance">言情</option>
+                            <option value="mystery">悬疑</option>
+                            <option value="science">科幻</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="form-label">状态</label>
+                        <select id="status" name="status" class="form-select" required>
+                            <option value="published">已发布</option>
+                            <option value="draft">草稿</option>
+                            <option value="review">审核中</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="content" class="form-label">故事内容</label>
+                        <textarea id="content" name="content" class="form-textarea" rows="6" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-btn">取消</button>
+                <button class="btn btn-primary" id="save-btn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除确认模态框 -->
+    <div class="modal hidden" id="delete-modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h2>确认删除</h2>
+                <button class="close-modal" id="close-delete-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>确定要删除故事 <span id="delete-story-name"></span> 吗？此操作不可撤销。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-delete-btn">取消</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">删除</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/stories.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>故事管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">故事管理系统</div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa fa-tachometer"></i>
+                    <span class="nav-text">仪表盘</span>
+                </a>
+                
+                <a href="users.html" class="nav-item">
+                    <i class="fa fa-users"></i>
+                    <span class="nav-text">用户管理</span>
+                </a>
+                
+                <a href="stories.html" class="nav-item">
+                    <i class="fa fa-book"></i>
+                    <span class="nav-text">故事管理</span>
+                </a>
+                
+                <a href="categories.html" class="nav-item">
+                    <i class="fa fa-folder"></i>
+                    <span class="nav-text">分类管理</span>
+                </a>
+                
+                <a href="vip.html" class="nav-item">
+                    <i class="fa fa-diamond"></i>
+                    <span class="nav-text">VIP管理</span>
+                </a>
+                
+                <a href="comments.html" class="nav-item">
+                    <i class="fa fa-comments"></i>
+                    <span class="nav-text">评论管理</span>
+                </a>
+                
+                <a href="orders.html" class="nav-item">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="nav-text">订单管理</span>
+                </a>
+                
+                <a href="favorites.html" class="nav-item">
+                    <i class="fa fa-heart"></i>
+                    <span class="nav-text">收藏管理</span>
+                </a>
+                
+                <div class="nav-bottom">
+                    <a href="settings.html" class="nav-item">
+                        <i class="fa fa-cog"></i>
+                        <span class="nav-text">系统设置</span>
+                    </a>
+                    
+                    <a href="logout.html" class="nav-item">
+                        <i class="fa fa-sign-out"></i>
+                        <span class="nav-text">退出登录</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 顶部导航栏 -->
+            <header class="top-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <button id="sidebar-toggle" class="sidebar-toggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="page-title">
+                            <h1>仪表盘</h1>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="user-menu">
+                            <button class="user-menu-button" id="user-menu-button">
+                                <img class="user-avatar" src="https://picsum.photos/id/1005/200/200" alt="用户头像">
+                            </button>
+                            <div class="user-dropdown hidden" id="user-menu">
+                                <a href="profile.html" class="dropdown-item">个人资料</a>
+                                <a href="settings.html" class="dropdown-item">账户设置</a>
+                                <a href="logout.html" class="dropdown-item">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 内容区域 -->
+            <main class="content-area">
+                <!-- 仪表盘页面 -->
+                <div id="dashboard-page" class="page-content">
+                    <!-- 统计卡片 -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-label">用户总数</div>
+                                <div class="stat-value">11</div>
+                                <div class="stat-change positive">
+                                    <i class="fa fa-arrow-up"></i>
+                                    <span>12% 较上月</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon indigo">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-label">故事总数</div>
+                                <div class="stat-value">10</div>
+                                <div class="stat-change positive">
+                                    <i class="fa fa-arrow-up"></i>
+                                    <span>8% 较上月</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <i class="fa fa-comments"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-label">评论总数</div>
+                                <div class="stat-value">51</div>
+                                <div class="stat-change positive">
+                                    <i class="fa fa-arrow-up"></i>
+                                    <span>18% 较上月</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon amber">
+                                <i class="fa fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-label">订单总数</div>
+                                <div class="stat-value">13</div>
+                                <div class="stat-change negative">
+                                    <i class="fa fa-arrow-down"></i>
+                                    <span>3% 较上月</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 图表区域 -->
+                    <div class="charts-section">
+                        <div class="chart-container large">
+                            <div class="chart-header">
+                                <h2>内容统计</h2>
+                                <div class="chart-controls">
+                                    <button class="chart-btn">本周</button>
+                                    <button class="chart-btn active">本月</button>
+                                    <button class="chart-btn">全年</button>
+                                </div>
+                            </div>
+                            <div class="chart-content">
+                                <canvas id="contentChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h2>分类分布</h2>
+                                <button class="chart-link">查看全部</button>
+                            </div>
+                            <div class="chart-content">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 最近活动 -->
+                    <div class="recent-activities">
+                        <div class="section-header">
+                            <h2>最近活动</h2>
+                            <button class="section-link">查看全部</button>
+                        </div>
+                        <div class="activities-list">
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <img src="https://picsum.photos/id/1012/200/200" alt="用户头像">
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">
+                                        <a href="#" class="user-link">张三</a>
+                                        <span class="activity-action">创建了新故事</span>
+                                        <a href="#" class="story-link">"神秘的森林"</a>
+                                    </div>
+                                    <div class="activity-time">2分钟前</div>
+                                </div>
+                                <div class="activity-badge new">新增</div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <img src="https://picsum.photos/id/1027/200/200" alt="用户头像">
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">
+                                        <a href="#" class="user-link">李四</a>
+                                        <span class="activity-action">评论了故事</span>
+                                        <a href="#" class="story-link">"海底世界"</a>
+                                    </div>
+                                    <div class="activity-time">15分钟前</div>
+                                </div>
+                                <div class="activity-badge comment">评论</div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <img src="https://picsum.photos/id/1025/200/200" alt="用户头像">
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">
+                                        <a href="#" class="user-link">王五</a>
+                                        <span class="activity-action">更新了故事</span>
+                                        <a href="#" class="story-link">"星际旅行"</a>
+                                    </div>
+                                    <div class="activity-time">1小时前</div>
+                                </div>
+                                <div class="activity-badge update">更新</div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-avatar">
+                                    <img src="https://picsum.photos/id/1074/200/200" alt="用户头像">
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">
+                                        <a href="#" class="user-link">赵六</a>
+                                        <span class="activity-action">购买了VIP会员</span>
+                                    </div>
+                                    <div class="activity-time">3小时前</div>
+                                </div>
+                                <div class="activity-badge purchase">购买</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+
